@@ -1,0 +1,203 @@
+#LayerTree span.layertree-tree-visibility {
+    margin: 0 0.5em;
+    color: @base_fg@;
+    background-color: white;
+}
+
+#LayerTree span.layertree-print-legend,
+#LayerTree span.layertree-delete-legend {
+    margin-left: 1em;
+    border: 1px solid transparent;
+    padding: 0.25em;
+}
+
+#LayerTree span.layertree-print-legend:hover,
+#LayerTree span.layertree-delete-legend:hover {
+    border: 1px solid white;
+}
+
+/* https://github.com/philipwalton/flexbugs/issues/216 */
+#LayerTree div.layertree-container-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+#LayerTree div.layertree-container {
+    flex: 0 0 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* topbar: 3.5em */
+    /* bottombar is high 3em at 75% font size, hence at 100% font size it is 0.75 * 3em = 2.25em */
+    /* titlebar: 2.5em */
+    max-height: calc(100vh - 8.25em); /* viewport - topbar - bottombar - sidebar_titlebar*/
+    max-height: calc(var(--vh, 1vh) * 100 - 8.25em); /* viewport - topbar - bottombar - sidebar_titlebar*/
+}
+
+#LayerTree div.layertree-tree {
+    min-height: 5em;
+    flex: 0 1 auto;
+    overflow-y: auto;
+    margin-right: 0.25em;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#LayerTree div.layertree-tree .drop-ghost {
+    outline: 1px solid #ccc;
+    background-color: white;
+}
+
+#LayerTree div.layertree-option {
+    flex: 0 0 auto;
+    height: 2.25em;
+    line-height: 1.75em;
+    padding: 0.25em 0.5em 0.25em 0.5em;
+    border-top: 1px solid @item_border@;
+}
+
+
+#LayerTree div.layertree-option > span {
+    cursor: pointer;
+}
+
+#LayerTree div.layertree-item-container {
+    margin-left: 0.5em;
+}
+
+#LayerTree div.layertree-item {
+    display: flex;
+    align-items: center;
+}
+
+#LayerTree span.layertree-item-expander {
+    margin-right: 0.25em;
+    flex: 0 0 1em;
+}
+
+#LayerTree div.layertree-item > div.spinner {
+    width: 1em;
+    height: 1em;
+    line-height: 1.75em;
+    flex: 0 0 auto;
+    margin-right: 0.5em;
+}
+
+#LayerTree span.layertree-item-checkbox {
+    margin-right: 0.5em;
+    flex: 0 0 auto;
+}
+
+#LayerTree img.layertree-item-legend-thumbnail {
+    height: 1.5em;
+    width: auto;
+    max-width: 2em;
+    margin-right: 0.5em;
+    border: 1px solid @item_border@;
+    flex: 0 0 auto;
+}
+
+#LayerTree span.layertree-item-legend-coloricon {
+    display: inline-block;
+    height: 1.5em;
+    width: 1.5em;
+    margin-right: 0.5em;
+    border: 1px solid @item_border@;
+    flex: 0 0 auto;
+}
+
+img.layertree-item-legend-tooltip {
+    position: absolute;
+    z-index: 6;
+    box-shadow: 0px 2px 5px rgba(136, 136, 136, 0.5);
+    border-radius: 0.5em;
+    border: 1px solid @item_border@;
+    margin-left: 1px;
+    padding: 0.25em;
+    background-color: white;
+}
+
+#LayerTree span.layertree-item-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 0 1 auto;
+    line-height: 1.75em;
+}
+
+#LayerTree div.layertree-item-noresults {
+    color: gray;
+    font-size: small;
+    font-style: italic;;
+}
+
+#LayerTree span.layertree-item-queryable {
+    margin-left: 0.25em;
+    color: #bbbbbb;
+    font-size: xx-small;
+    vertical-align: top;
+    flex: 0 0 auto;
+}
+
+#LayerTree span.layertree-item-spacer {
+    flex: 1 1 auto;
+}
+
+#LayerTree span.layertree-item-remove {
+    line-height: 1.75em;
+    text-align: center;
+    width: 1.75em;
+    color: @item_border@;
+    flex: 0 0 auto;
+}
+
+#LayerTree span.layertree-item-remove:hover {
+    color: red;
+}
+
+#LayerTree span.layertree-item-cog {
+    line-height: 1.75em;
+    text-align: center;
+    width: 1.75em;
+    color: @item_border@;
+    flex: 0 0 auto;
+    margin-left: 0.25em;
+}
+
+#LayerTree span.layertree-item-cog-active {
+    background-color: @item_border@;
+    color: white;
+}
+
+#LayerTree div.layertree-item-edit-frame {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+#LayerTree div.layertree-item-edit-items {
+    flex: 0 0 auto;
+    max-width: calc(100% - 1em);
+    height: 1.75em;
+    border: 1px solid @item_border@;
+    color: @titlebar_bg@;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    background-color: white;
+}
+
+#LayerTree input.layertree-item-transparency-slider {
+    flex: 1 1 auto;
+    font-size: small;
+    min-width: 0;
+    max-width: none;
+    width: 1000em; /* exagerated value */
+    margin: 0 0.25em;
+}
+
+#LayerTree div.layertree-item-edit-items span.icon {
+    flex: 0 0 auto;
+    width: 1.75em;
+    text-align: center;
+}

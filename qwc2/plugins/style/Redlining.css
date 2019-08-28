@@ -1,0 +1,52 @@
+.Redlining div.redlining-buttongroups {
+    display: flex;
+    align-items: center;
+}
+
+.Redlining div.redlining-separator {
+    border-bottom: 1px solid @item_border@;
+    margin-bottom: 0.25em;
+}
+
+.Redlining div.redlining-group {
+    margin: 0;
+    flex: 1 1 auto;
+    margin: 0 0.25em;
+}
+
+.Redlining div.redlining-group > div:first-child {
+    font-size: 85%;
+}
+
+.Redlining div.redlining-group > div {
+    white-space: nowrap;
+}
+
+.Redlining div.redlining-controlsbar {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Redlining div.redlining-message {
+    line-height: 2em;
+    font-style: italic;
+}
+
+.Redlining div.redlining-controlsbar > span {
+    display: inline-flex;
+    flex: 1 0 auto;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0.25em;
+}
+
+.Redlining span.react-numeric-input {
+    width: 7em;
+}
+
+.Redlining input.redlining-label {
+  width: 7em;
+  height: 2em;
+  padding: 0.25em;
+  border: 1px solid @item_border@;
+}

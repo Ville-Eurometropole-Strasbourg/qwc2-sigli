@@ -1,0 +1,9 @@
+#Share div.social-links,
+#Share div.share-link,
+#Share div.qr-code {
+    padding: 0.5em 1em;
+}
+
+#Share div.SocialMediaShareButton {
+    cursor: pointer;
+}

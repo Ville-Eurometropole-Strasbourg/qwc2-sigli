@@ -1,0 +1,12 @@
+.RasterExport div.help-text {
+    font-style: italic;
+    padding-bottom: 0.5em;
+}
+
+.RasterExport div.raster-export-settings {
+    font-size: small;
+}
+
+.RasterExport div.raster-export-settings > span {
+    margin: 0.5em;
+}

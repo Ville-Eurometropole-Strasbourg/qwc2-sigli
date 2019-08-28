@@ -1,0 +1,85 @@
+#TopBar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 3.5em;
+    color: @panel_fg@;
+    background-color: @panel_bg@;
+    box-shadow: 0px 2px 4px rgba(136, 136, 136, 0.5);
+    z-index: 9;
+    display: flex;
+    align-items: center;
+}
+
+#TopBar img.logo {
+    width: auto;
+    height: 3.5em;
+    flex: 0 0 auto;
+}
+
+#TopBar div.center-span {
+    margin: 0 1em;
+    flex: 1 1 auto;
+    display: inline-flex;
+}
+
+#TopBar #AppMenu {
+    height: 3.5em;
+    flex: 0 0 auto;
+}
+
+#TopBar #FullScreenSwitcher {
+    height: 3.5em;
+    flex: 0 0 auto;
+}
+
+#TopBar.fullscreen {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+#TopBar.fullscreen img.logo,
+#TopBar.fullscreen #AppMenu .appmenu-label {
+    display: none;
+}
+
+#TopBar #AppMenu .appmenu-button {
+    line-height: 3.5em;
+    margin-right: 1em;
+    width: 19em;
+    display: inline-block;
+}
+
+#TopBar.mobile #AppMenu .appmenu-button,
+#TopBar.fullscreen #AppMenu .appmenu-button {
+    width: auto;
+}
+
+#TopBar.mobile #AppMenu .appmenu-button {
+    margin-right: 0;
+}
+
+#TopBar #AppMenu .appmenu-label {
+    font-weight: bold;
+    transition: color 0.25s;
+}
+
+#TopBar #AppMenu.appmenu-visible .appmenu-label {
+    color: white;
+}
+
+#TopBar #AppMenu .appmenu-icon {
+    color: @panel_fg@;
+    padding: 0.25em;
+    margin: 0 1em;
+    border: 2px solid @panel_fg@;
+    background-color: @panel_bg@;
+    transition: color 0.25s, border-color 0.25s, background-color 0.25s;
+}
+
+#TopBar #AppMenu.appmenu-visible .appmenu-icon {
+    color: white;
+    border-color: white;
+    background-color: inherit;
+}

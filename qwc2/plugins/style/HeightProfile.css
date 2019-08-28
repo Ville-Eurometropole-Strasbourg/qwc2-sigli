@@ -1,0 +1,72 @@
+#HeightProfile {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 2.25em;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 -2px 4px rgba(136, 136, 136, 0.5);
+    padding-top: 0.5em;
+    z-index: 2;
+}
+
+#HeightProfile g.ct-grids line.ct-grid {
+    stroke: lightgray;
+    stroke-width: 1px;
+}
+
+#HeightProfile g.ct-series-a path.ct-line {
+    stroke: red;
+    stroke-width: 2px;
+    fill: none;
+}
+
+#HeightProfile g.ct-series-a path.ct-area {
+    fill: rgba(255,0,0,0.5);
+}
+
+#HeightProfile g.ct-labels .ct-label {
+    color: gray;
+    fill: gray;
+    text-anchor: middle;
+    font-size: 0.75rem;
+    display: flex;
+}
+
+
+#HeightProfile g.ct-labels span.ct-vertical {
+    justify-content: flex-end;
+    align-items: center;
+    transform: translate(0, 50%);
+}
+
+#HeightProfile g.ct-labels span.ct-horizontal {
+    justify-content: center;
+    transform: translate(-50%,0);
+}
+
+#HeightProfile text.ct-axis-title {
+    fill: gray;
+    font-size: 0.8rem;
+}
+
+#HeightProfile span.height-profile-tooltip {
+    visibility: hidden;
+    position: absolute;
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 0.5em;
+    padding: 0.5em;
+    color: white;
+    transform: translate(-50%, 0%);
+    white-space: nowrap;
+}
+
+#HeightProfile span.height-profile-marker {
+    visibility: hidden;
+    position: absolute;
+    display: inline-block;
+    width: 1px;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}

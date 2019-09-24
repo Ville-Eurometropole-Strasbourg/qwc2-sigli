@@ -2,72 +2,169 @@
   "themes": {
     "items": [
       {
-        "title": "fonds ems",
-        "url": "http://128.1.121.97/qgis_serveur/CONSULT_fond_de_carte_gris",
+        "url": "http://qwc2.sourcepole.ch/wms/wolfsburg/qwc2_demo",
+        "attribution": "Stadt Wolfsburg",
+        "attributionUrl": "https://geoportal.stadt.wolfsburg.de/",
         "format": "image/png; mode=8bit",
+        "default": true,
         "scales": [200000, 80000, 40000, 20000, 10000, 8000, 6000, 4000, 2000, 1000, 500, 250, 100],
         "backgroundLayers": [
           {
-            "name": "mapnik"
-          },
-          {
-            "name": "Night2012"
+            "name": "mapnik",
+            "printLayer": "osm_farbig",
+            "visibility": true
           }
-  
-          ],
-        "searchProviders": ["coordinates", "adict","BAN"],
-        "mapCrs": "EPSG:3948",
-        "additionalMouseCrs": ["EPSG:21781", "EPSG:2056"]
+        ],
+        "searchProviders": ["coordinates", "wolfsburg"],
+        "mapCrs": "EPSG:3857",
+        "additionalMouseCrs": ["EPSG:25832", "EPSG:32632"],
+        "collapseLayerGroupsBelowLevel": 1
       },
       {
-        "title": "fonds",
-        "url": "http://128.1.121.97/qgis_serveur/projet_vide",
-        "format": "image/png; mode=8bit",
-        "default": true,
+        "url": "http://qwc2.sourcepole.ch/wms/uster/bauprojekte",
+        "attribution": "Stadt Uster",
+        "attributionUrl": "https://gis.uster.ch/",
+        "scales": [80000, 40000, 20000, 10000, 8000, 6000, 4000, 2000, 1000, 500, 250, 100],
+        "printScales": [80000, 40000, 20000, 10000, 8000, 6000, 4000, 2000, 1000, 500, 250, 100],
+        "printResolutions": [150, 300, 600],
         "backgroundLayers": [
           {
-            "name": "ems gris"
+            "name": "mapnik",
+            "visibility": true
           },
           {
-            "name": "ems plu"
-          },
-          {
-            "name": "adict"
-          },
-          {
-            "name": "local gris"
-          },
-          {         
-            "name": "bluemarble"
+            "name": "opentopomap"
           }
-  
-          ],
-        "searchProviders": ["coordinates", "adict","BAN"],
-        "mapCrs": "EPSG:3948",
-        "additionalMouseCrs": ["EPSG:21781", "EPSG:2056"]
-      },
-      {
-        "title": "essai impression",
-        "url": "http://128.1.121.97/qgis_serveur/essai_impression_qgisweb",
-        "format": "image/png; mode=8bit",
-        "backgroundLayers": [
-          {
-            "name": "adict",
-            "printlayer":"adict"
-          },
-          {
-            "name": "local gris",
-            "printlayer":"adict"
-          }
-  
-          ],
-        "searchProviders": ["coordinates", "adict","BAN"],
-        "mapCrs": "EPSG:3948",
+        ],
+        "searchProviders": ["coordinates", "uster"],
+        "mapCrs": "EPSG:3857",
         "additionalMouseCrs": ["EPSG:21781", "EPSG:2056"]
       }
     ],
     "groups": [
-      
+      {
+        "title": "Dev Tests",
+        "items": [
+          {
+            "title": "QWC2 Test",
+            "url": "http://qwc2.sourcepole.ch/wms/themes/test",
+            "attribution": "Demo attribution",
+            "attributionUrl": "https://127.0.0.1/",
+            "tiled": true,
+            "backgroundLayers": [
+              {
+                "name": "mapnik",
+                "visibility": true
+              },
+              {
+                "name": "Night2012"
+              },
+              {
+                "name": "StamenToner"
+              },
+              {
+                "name": "StamenWatercolor"
+              },
+              {
+                "name": "Gemeindegrenzen"
+              },
+              {
+                "name": "bluemarble"
+              }
+            ],
+            "searchProviders": ["coordinates", "geoadmin", "glarus"],
+            "mapCrs": "EPSG:4326",
+            "additionalMouseCrs": ["EPSG:21781", "EPSG:2056"],
+            "printLabelForSearchResult": "test",
+            "watermark": {
+              "text": "Watermark Test",
+              "texpadding": "1",
+              "fontsize": "14",
+              "fontfamily": "sans",
+              "fontcolor": "#0000FF",
+              "backgroundcolor": "#FFFFFF",
+              "framecolor": "#000000",
+              "framewidth": 1
+            },
+            "skipEmptyFeatureAttributes": true
+          },
+          {
+            "title": "QWC2 Test 2056",
+            "url": "http://qwc2.sourcepole.ch/wms/themes/test",
+            "attribution": "Demo attribution",
+            "attributionUrl": "https://127.0.0.1/",
+            "tiled": true,
+            "backgroundLayers": [
+              {
+                "name": "pixelkarte",
+                "visibility": true
+              }
+            ],
+            "searchProviders": ["coordinates", "geoadmin", "glarus"],
+            "featureReport": {
+              "a": "template_a",
+              "b": "template_b"
+            },
+            "mapCrs": "EPSG:2056",
+            "additionalMouseCrs": ["EPSG:21781", "EPSG:2056"],
+            "printLabelForSearchResult": "test",
+            "watermark": {
+              "text": "Watermark Test",
+              "texpadding": "1",
+              "fontsize": "14",
+              "fontfamily": "sans",
+              "fontcolor": "#0000FF",
+              "backgroundcolor": "#FFFFFF",
+              "framecolor": "#000000",
+              "framewidth": 1
+            },
+            "skipEmptyFeatureAttributes": true,
+            "editConfig": "test2056_edit.json",
+            "extraLegendParameters": "&LAYERTITLE=FALSE"
+          },
+          {
+            "title": "QGIS.org QGIS Server Demo",
+            "url": "http://qgis4.qgis.org:8081/qgisserver_demo",
+            "attribution": "QGIS.org",
+            "attributionUrl": "https://qgis.org",
+            "backgroundLayers": [
+              {
+                "name": "GEOGRAPHICALGRIDSYSTEMS.MAPS",
+                "visibility": true
+              },
+              {
+                "name": "mapnik"
+              }
+            ],
+            "searchProviders": ["coordinates"],
+            "mapCrs": "EPSG:3857",
+            "scales": [
+              591658710.9091312,
+              295829355.4545656,
+              147914677.7272828,
+              73957338.8636414,
+              36978669.4318207,
+              18489334.71591035,
+              9244667.357955175,
+              4622333.678977587,
+              2311166.8394887936,
+              1155583.4197443968,
+              577791.7098721984,
+              288895.8549360992,
+              144447.9274680496,
+              72223.9637340248,
+              36111.9818670124,
+              18055.9909335062,
+              9027.9954667531,
+              4513.99773337655
+            ]
+          }
+		  
+		],
+		
+        "groups": [
+
+        ]},
 		{
 		"title": "cus Tests",
         "items": [
@@ -75,6 +172,7 @@
 						"title": "test1 ems",
 						"url": "http://128.1.121.97/qgis_serveur/projet_test1",
 						"format": "image/png; mode=8bit",
+						"default": true,
 						"scales": [200000, 80000, 40000, 20000, 10000, 8000, 6000, 4000, 2000, 1000, 500, 250, 100],
 						"backgroundLayers": [
 							{
@@ -93,6 +191,7 @@
 						"title": "test communes",
 						"url": "http://128.1.121.97/qgis_serveur/communes",
 						"format": "image/png; mode=8bit",
+						"default": true,
 						"scales": [200000, 80000, 40000, 20000, 10000, 8000, 6000, 4000, 2000, 1000, 500, 250, 100],
 						"backgroundLayers": [
 							{
@@ -115,6 +214,7 @@
 						"title": "test cadastre2",
 						"url": "http://128.1.121.97/qgis_serveur/test_cadastre2",
 						"format": "image/png; mode=8bit",
+						"default": true,
 						"scales": [200000, 80000, 40000, 20000, 10000, 8000, 6000, 4000, 2000, 1000, 500, 250, 100],
 						
 						"backgroundLayers": [
@@ -162,18 +262,6 @@
       },
 	  {
         "name": "adict",
-        "title": "fonds adict",
-        "type": "wms",
-        "url": "https://adict.strasbourg.eu/mapproxy/service",
-		"params": {
-          "LAYERS": "monstrasbourg",
-          "STYLES": "default"
-        },
-        "thumbnail": "mapnik.jpg",
-        "attribution": "ems"
-      },
-      {
-        "name": "fonds ems",
         "title": "fonds adict",
         "type": "wms",
         "url": "https://adict.strasbourg.eu/mapproxy/service",
@@ -245,13 +333,13 @@
       },
 	        {
         "type": "wmts",
-        "url": "file://H:/SIG/Pole_exploitation/Prestations/Woosmap_fdp_gris/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.png",
+        "url": "file://H:/SIG/Pole_exploitation/Prestations/Woosmap_fdp_gris/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpeg",
         "title": "opendatatiles",
-        "name": "ems local",
+        "name": "emstiles2",
         "tileMatrixPrefix": "",
         "tileMatrixSet": "180828_maj",
-        "originX": 0.0,
-        "originY": 0.0,
+        "originX": -20037508.34278925,
+        "originY": 20037508.34278925,
         "projection:": "EPSG:3857",
         "resolutions": [
           156543.03390625,
@@ -261,17 +349,7 @@
           9783.939619140625,
           4891.9698095703125,
           2445.9849047851562,
-          1222.9924523925781,
-          611.49622628141,
-          305.748113140705,
-          152.8740565703525,
-          76.43702828517625,
-          38.21851414258813,
-          19.109257071294063,
-          9.554628535647032,
-          4.777314267823516,
-          2.388657133911758,
-          1.194328566955879
+          1222.9924523925781
         ],
         "tileSize": [
           256,
@@ -279,43 +357,6 @@
         ],
         "thumbnail": "img/mapthumbs/default.jpg"
       },
-
-      {
-        "type": "tileprovider",
-        "title": "local gris",
-        "name": "local gris",
-        "source": "local",
-        "provider": "local.gris",
-        "attribution": "cigas",
-        "thumbnail": "img/mapthumbs/default.jpg"
-      },
-
-
-
-
-      {
-        "type": "tileprovider",
-        "title": "opendata plu",
-        "name": "ems plu",
-        "source": "whoosmap",
-        "provider": "whoosmap.plu",
-        "attribution": "plu ems",
-        "thumbnail": "img/mapthumbs/default.jpg"
-      },
-      
-      {
-        "type": "tileprovider",
-        "title": "opendata gris",
-        "name": "ems gris",
-        "source": "whoosmap",
-        "provider": "whoosmap.ems_gris",
-        "attribution": "cigas",
-        "thumbnail": "img/mapthumbs/default.jpg"
-      },
-
-
-
-
       {
         "type": "wms",
         "url": "https://maps.omniscale.net/v2/swl-33d96aa8/style.default/map",

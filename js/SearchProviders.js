@@ -338,6 +338,68 @@ function glarusResultGeometry(resultItem, callback) {
     .then(response => callback(resultItem, response.data, "EPSG:2056"));
 }
 
+////////////////////////////EMS//////////////////////////////////////////////
+
+function adictSearch(text, requestId, searchOptions, dispatch) {
+    let limit = 9;
+    axios.get("http://adict.strasbourg.eu/addok/search?q="+ encodeURIComponent(text))
+    .then(response => dispatch(adictSearchResults(response.data, requestId,'adict', limit)))
+    .catch(error => dispatch(adictSearchResults({}, requestId,'adict', limit)));
+}
+
+function banSearch(text, requestId, searchOptions, dispatch) {
+    let limit = 9;
+    axios.get("https://api-adresse.data.gouv.fr/search/?q="+ encodeURIComponent(text))
+    .then(response => dispatch(adictSearchResults(response.data, requestId,'BAN', limit)))
+    .catch(error => dispatch(adictSearchResults({}, requestId,'BAN', limit)));
+}
+
+
+
+
+function adictMoreResults(moreItem, text, requestId, dispatch) {
+    axios.get("http://adict.strasbourg.eu/addok/search?q="+ encodeURIComponent(text))
+    .then(response => dispatch(adictSearchResults(response.data, requestId,'adict')))
+    .catch(error => dispatch(adictSearchResults({}, requestId,'adict')));
+}
+
+function banMoreResults(moreItem, text, requestId, dispatch) {
+    axios.get("https://api-adresse.data.gouv.fr/search/?q="+ encodeURIComponent(text))
+    .then(response => dispatch(adictSearchResults(response.data, requestId,'BAN')))
+    .catch(error => dispatch(adictSearchResults({}, requestId,'BAN')));
+}
+
+function adictSearchResults(obj, requestId, coder='adict', limit = -1) {
+    console.log('resultat',obj)
+    let results = [];
+    let idcounter = 0;
+    let groupResult = {
+        id: coder,
+        title: coder,
+        provider: coder,
+        items: obj.features.map(item => { return {
+            id: item.properties.id,
+            text: item.properties.label,
+            y: item.geometry.coordinates[1],
+            x: item.geometry.coordinates[0],
+            crs: "EPSG:4326"}})
+        };
+        
+        results.push(groupResult);
+    
+    console.log('retour',results)
+    return addSearchResults({data: results, provider: coder, reqId: requestId}, true);
+}
+
+function adictResultGeometry(resultItem, callback) {
+    axios.get("http://adict.strasbourg.eu/addok/search?q=" + resultItem.category + "/geometry?id=" + resultItem.id)
+    .then(response => callback(resultItem, response.data, "EPSG:4326"));
+}
+function banResultGeometry(resultItem, callback) {
+    axios.get("https://api-adresse.data.gouv.fr/search/?q=" + resultItem.category + "/geometry?id=" + resultItem.id)
+    .then(response => callback(resultItem, response.data, "EPSG:4326"));
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 
 function parametrizedSearch(cfg, text, requestId, searchOptions, dispatch)
@@ -417,6 +479,25 @@ module.exports = {
             getResultGeometry: glarusResultGeometry,
             getMoreResults: glarusMoreResults
         },
+         "glarus": {
+            label: "Glarus",
+            onSearch: glarusSearch,
+            getResultGeometry: glarusResultGeometry,
+            getMoreResults: glarusMoreResults
+        },
+        "adict": {
+            label: "adict",
+            onSearch: adictSearch,
+            getResultGeometry: adictResultGeometry,
+            getMoreResults: adictMoreResults
+        },
+        "BAN": {
+            label: "BAN",
+            onSearch: banSearch,
+            getResultGeometry: banResultGeometry,
+            getMoreResults: banMoreResults
+        },
+        
         "layers": {
             label: "Layers",
             onSearch: layerSearch

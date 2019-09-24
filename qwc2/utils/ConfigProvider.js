@@ -149,6 +149,51 @@ const CONFIGPROVIDER = {
                 subdomains: 'abcd'
             }
         },
+        
+        whoosmap: {
+            url: 'http://wgs-users.s3.amazonaws.com/cus/{variant}/{z}/{x}/{y}.{ext}',
+            options: {
+                minZoom: 11,
+                maxZoom: 20,
+                variant: 'plu',
+                ext: 'png',
+                attribution: 'EMS'
+            },
+            variants: {
+                ems_gris:{
+                    options: {
+                        variant: 'fonds/ems_gris'
+                        }
+                    },
+                    plu:{
+                        options: {
+                            variant: 'PLUI/cache_google'
+                            }
+                        }
+                }
+        },
+
+        local: {
+            url: 'http://128.1.121.97/emstiles/{variant}/{z}/{x}/{y}.{ext}',
+            options: {
+                minZoom: 11,
+                maxZoom: 20,
+                variant: 'gris',
+                ext: 'png',
+                attribution: 'EMS'
+            },
+            variants: {
+                gris:{
+                    options: {
+                        variant: 'Woosmap_fdp_gris/180828_maj'
+                        }
+                    }
+                }
+        },
+
+
+        
+ 
         Stamen: {
             url: '//stamen-tiles-{s}.a.ssl.fastly.net/{variant}/{z}/{x}/{y}.{ext}',
             options: {
